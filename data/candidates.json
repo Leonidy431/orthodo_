@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-18",
+  "verified_unique_book_count": 0,
+  "source_leads_not_counted_as_books": [
+    {
+      "id": "lead-goarch-synekdemos",
+      "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+      "role": "book_discovery_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; page content, edition, language, and rights not verified."
+    },
+    {
+      "id": "lead-st-gregory-prayers",
+      "url": "https://stgregorychicago.org/daily-prayers/",
+      "role": "web_prayer_collection_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; page content, standalone-book status, and rights not verified."
+    },
+    {
+      "id": "lead-bg-liturgical-prayer",
+      "url": "https://bg-patriarshia.bg/liturgical-prayer",
+      "role": "church_site_or_book_section_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; page content, book identity, and rights not verified."
+    },
+    {
+      "id": "lead-bg-morning-prayers",
+      "url": "https://bg-patriarshia.bg/liturgical-prayer/utrinni-molitvi",
+      "role": "possible_section_of_same_bulgarian_source",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; not counted separately from the Bulgarian prayer source."
+    },
+    {
+      "id": "lead-armenian-church-library",
+      "url": "https://www.armenianchurchlibrary.com/",
+      "role": "catalog_or_library_discovery_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; catalog contents and individual titles not verified."
+    },
+    {
+      "id": "lead-st-neres-announcement",
+      "url": "https://armenianprelacy.org/2022/06/16/new-edition-of-st-nerses-shnorhalis-in-faith-i-confess/",
+      "role": "edition_announcement_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; edition details, text availability, and rights not verified."
+    },
+    {
+      "id": "lead-shnorhali",
+      "url": "https://shnorhali.com/",
+      "role": "book_or_project_discovery_lead",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; site identity, contents, and rights not verified."
+    },
+    {
+      "id": "lead-vemkar-etiquette",
+      "url": "https://vemkar.us/wp-content/uploads/2025/01/VTS-Church-Etiquette-WEB.pdf",
+      "role": "etiquette_reference_not_a_book_candidate",
+      "status": "not_verified",
+      "check_result": "DNS resolution failed in this environment; PDF content, publisher, and rights not verified."
+    }
+  ],
+  "candidates": []
+}
