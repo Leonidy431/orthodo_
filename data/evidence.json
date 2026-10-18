@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {"id": "cy-prayer", "url": "https://imtrimythountos.org.cy/prosefxitarion/", "edition": null, "access": "search_only", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null},
+    {"id": "cy-etiquette", "url": "https://churchofcyprus.org.cy/8418", "edition": null, "access": "dns_blocked", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null},
+    {"id": "arm-prelacy", "url": "https://armenianprelacy.org/2022/06/16/new-edition-of-st-nerses-shnorhalis-in-faith-i-confess/", "edition": null, "access": "search_only", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null},
+    {"id": "arm-etiquette", "url": "https://vemkar.us/wp-content/uploads/2025/01/VTS-Church-Etiquette-WEB.pdf", "edition": null, "access": "search_only", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null},
+    {"id": "bg-prayer", "url": "https://bg-patriarshia.bg/liturgical-prayer/utrinni-molitvi", "edition": null, "access": "search_only", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null},
+    {"id": "ru-participation", "url": "https://www.patriarchia.ru/db/text/4186657.html", "edition": null, "access": "dns_blocked", "checked_at": "2026-10-18", "rights": "unknown", "sha256": null}
+  ],
+  "claims": [
+    {"id": "Q-PRAYER", "wording": "Какая редакция основной молитвы применяется в данной общине?", "books": ["universal", "armenia", "bulgaria", "cyprus", "russia"], "category": "unknown", "context": {"jurisdictions": [], "place": null, "service_time": null, "visitor_status": "unspecified", "gender_age": null, "accessibility": null}, "source_ids": ["cy-prayer", "arm-prelacy", "bg-prayer"], "locator": null, "quotation": null, "translation": null, "verification": "unknown", "checked_at": "2026-10-18", "evidence": [], "exceptions": [], "local_custom": false},
+    {"id": "Q-ETIQUETTE", "wording": "Что советуют при входе и выходе, чтобы не мешать службе?", "books": ["universal", "armenia", "bulgaria", "cyprus", "russia"], "category": "unknown", "context": {"jurisdictions": [], "place": null, "service_time": null, "visitor_status": "visitor", "gender_age": null, "accessibility": null}, "source_ids": ["cy-etiquette", "arm-etiquette"], "locator": null, "quotation": null, "translation": null, "verification": "unknown", "checked_at": "2026-10-18", "evidence": [], "exceptions": [], "local_custom": false},
+    {"id": "Q-PARTICIPATION", "wording": "Какие условия участия относятся отдельно к посетителю, оглашаемому и члену церкви?", "books": ["universal", "armenia", "bulgaria", "cyprus", "russia"], "category": "unknown", "context": {"jurisdictions": [], "place": null, "service_time": null, "visitor_status": "unspecified", "gender_age": null, "accessibility": null}, "source_ids": ["ru-participation"], "locator": null, "quotation": null, "translation": null, "verification": "unknown", "checked_at": "2026-10-18", "evidence": [], "exceptions": [], "local_custom": false}
+  ]
+}

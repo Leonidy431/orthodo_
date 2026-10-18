@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-18",
+  "scope_closed": false,
+  "territories": ["Россия", "Белоруссия", "Украина", "Молдова", "Грузия", "Болгария", "Румыния", "Сербия", "Черногория", "Северная Македония", "Греция", "Кипр", "Албания", "Польша", "Чехия", "Словакия", "Финляндия", "Эстония", "Латвия", "Литва"],
+  "comparative_territories": ["Армения"],
+  "registry_status": "open_identity_leads_not_verified_statuses",
+  "jurisdictions": [
+    {"id": "cyprus-church", "self_name": "Ἐκκλησία τῆς Κύπρου", "family": "eastern_orthodox", "territories": ["Кипр"], "administrative_status": null, "governing_body": null, "mother_church": null, "primacy": null, "recognition": [], "communion": [], "source_ids": ["cy-prayer", "cy-etiquette"], "verification": "unknown", "checked_at": "2026-10-18"},
+    {"id": "armenian-apostolic", "self_name": "Հայ Առաքելական Եկեղեցի", "family": "oriental_orthodox", "territories": ["Армения"], "administrative_status": null, "governing_body": null, "mother_church": null, "primacy": null, "recognition": [], "communion": [], "source_ids": ["arm-prelacy", "arm-etiquette"], "verification": "unknown", "checked_at": "2026-10-18", "note": "US diaspora sources do not establish governance or local practice in Armenia; internal jurisdictions remain to enumerate."},
+    {"id": "bulgarian-orthodox", "self_name": "Българска православна църква", "family": "eastern_orthodox", "territories": ["Болгария"], "administrative_status": null, "governing_body": null, "mother_church": null, "primacy": null, "recognition": [], "communion": [], "source_ids": ["bg-prayer"], "verification": "unknown", "checked_at": "2026-10-18"},
+    {"id": "russian-orthodox", "self_name": "Русская Православная Церковь", "family": "eastern_orthodox", "territories": ["Россия"], "administrative_status": null, "governing_body": null, "mother_church": null, "primacy": null, "recognition": [], "communion": [], "source_ids": ["ru-participation"], "verification": "unknown", "checked_at": "2026-10-18"}
+  ],
+  "coverage_queue": "Every listed territory needs primary-source enumeration of all relevant jurisdictions, including multiple jurisdictions and dated opposing official positions where disputed. Existing identity leads do not close any territory."
+}
