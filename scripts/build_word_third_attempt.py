@@ -96,9 +96,10 @@ def build(blocks):
         expected.append(text)
         p = element(parent, "p")
         props = element(p, "pPr")
-        element(props, "spacing", {"after": 120})
         if style:
             element(props, "keepNext")
+        element(props, "spacing", {"after": 120})
+        if style:
             element(props, "outlineLvl", {"val": int(style[-1]) - 1})
         # Explicit run properties keep the document independent of installed templates.
         for part in re.split(r"(https://[^\s<>]+)", text):
@@ -119,10 +120,10 @@ def build(blocks):
                 "ascii": "DejaVu Sans", "hAnsi": "DejaVu Sans",
                 "eastAsia": "DejaVu Sans", "cs": "DejaVu Sans",
             })
-            element(rprops, "lang", {"val": language})
-            element(rprops, "sz", {"val": 28 if style else 22})
             if style:
                 element(rprops, "b")
+            element(rprops, "sz", {"val": 28 if style else 22})
+            element(rprops, "lang", {"val": language})
             node = element(run, "t", text=part)
             node.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
         return p
@@ -134,10 +135,10 @@ def build(blocks):
             table = element(body, "tbl")
             props = element(table, "tblPr")
             element(props, "tblW", {"w": 14400, "type": "dxa"})
-            element(props, "tblLayout", {"type": "fixed"})
             borders = element(props, "tblBorders")
             for side in ("top", "left", "bottom", "right", "insideH", "insideV"):
                 element(borders, side, {"val": "single", "sz": 4, "color": "808080"})
+            element(props, "tblLayout", {"type": "fixed"})
             grid = element(table, "tblGrid")
             for _ in range(3):
                 element(grid, "gridCol", {"w": 4800})
@@ -204,6 +205,16 @@ def validate(content, expected):
         for name in archive.namelist():
             ET.fromstring(archive.read(name))
         root = ET.fromstring(archive.read("word/document.xml"))
+        # Check the property sequences emitted here, not the complete OOXML schema.
+        for path, order in (
+            (".//w:pPr", ["keepNext", "spacing", "outlineLvl"]),
+            (".//w:rPr", ["rFonts", "b", "sz", "lang"]),
+            (".//w:tblPr", ["tblW", "tblBorders", "tblLayout"]),
+        ):
+            for properties in root.findall(path, ns):
+                indices = [order.index(child.tag.rsplit("}", 1)[-1]) for child in properties]
+                if indices != sorted(indices):
+                    raise ValueError("OOXML property order is invalid")
         actual = [
             "".join(p.itertext())
             for p in root.findall(".//w:p", ns)

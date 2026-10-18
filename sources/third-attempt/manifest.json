@@ -1,0 +1,60 @@
+{
+  "attempt": "third-attempt",
+  "date": "2026-10-18",
+  "source_prompt_commit": "391a15499a34310efd9dcd5ac85c038a344f7f0d",
+  "source_prompt_blob": "9d3a95726bfd6f73f4e46d4d851fa6338da1f6cb",
+  "candidate_metadata": "../../data/third-attempt/candidates.json",
+  "source_full_text_files": [],
+  "git_clones": [],
+  "https_book_downloads": [],
+  "directly_inspected_metadata": [
+    {
+      "url": "https://github.com/Thanasis-pap/proseuchitari",
+      "tool": "GitHub MCP get_file_contents",
+      "files": [
+        {"path": "README.md", "blob_sha": "b56b4d10379a55c907ce1af4ba68eb9ff5f155bc"}
+      ],
+      "snapshot_commit": null,
+      "decision": "Application, not standalone book. README Apache 2.0 claim does not establish specific prayer rights. No import."
+    },
+    {
+      "url": "https://github.com/mdws-org/orthodoxprayers",
+      "tool": "GitHub MCP get_file_contents",
+      "files": [
+        {"path": "README.md", "blob_sha": "5291a4e965c574ebfb29eccab6fd65468440498a"},
+        {"path": "about/index.html", "blob_sha": "6f796f829be4626072b333f92cb471e9173d851f"}
+      ],
+      "snapshot_commit": null,
+      "decision": "Mixed-source web project. README reserves texts and art to respective holders. No blanket permission for requested texts. No import."
+    }
+  ],
+  "unresolved_identity_leads": [
+    {
+      "url": "https://bg-patriarshia.bg/news/molitvenik-novo-izdanie-na-sofiyska-sveta-mitropolia",
+      "evidence": "Search-only report: Sofia Metropolis prayerbook announcement in 2023, 662 pages. Imprint and distinction from catalogued books not inspected."
+    },
+    {
+      "url": "https://mitropolia-sofia.org/2025/10/17/молитвеник/",
+      "evidence": "Search-only report: 608-page phototype associated with Антим I and 2000 original. Reprint year and edition identity not inspected."
+    },
+    {
+      "url": "http://mitropolia-starazagora.bg/wp-content/uploads/2018/09/2-molitvenik1.pdf",
+      "evidence": "Search-discovered HTTP lead only, no HTTPS download performed. Metadata conflated by search; not counted as new unique book."
+    }
+  ],
+  "auxiliary_etiq_sources": [
+    {
+      "url": "https://rilskimanastir.org/bg/about/iziskvaniia-k-m-posetitelite/",
+      "evidence_level": "search_only",
+      "scope": "Visitor requirements of one monastery; not a general Bulgarian parish rule."
+    },
+    {
+      "url": "https://bg-patriarshia.bg/temples-monasteries",
+      "evidence_level": "search_only",
+      "scope": "Jurisdiction lead, not directly inspected."
+    }
+  ],
+  "rights": "No book or prayer translation has confirmed republication rights.",
+  "checksums": "../../data/third-attempt/SHA256SUMS",
+  "checksum_scope": "Locally authored research metadata, builder and generated layout only; no source-book checksums exist."
+}
