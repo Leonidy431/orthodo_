@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "target_count": 9,
+  "corpus_count": 5,
+  "mvp_chapters": [1, 2, 5, 8, 9, 10, 12],
+  "status": "planned_language_targets_not_nine_finished_books",
+  "corpora": [
+    {"id": "universal", "segments": "books/universal/segments.json"},
+    {"id": "armenia", "segments": "books/armenia/segments.json"},
+    {"id": "bulgaria", "segments": "books/bulgaria/segments.json"},
+    {"id": "cyprus", "segments": "books/cyprus/segments.json"},
+    {"id": "russia", "segments": "books/russia/segments.json"}
+  ],
+  "editions": [
+    {"id": "universal-el-en-bg", "corpus_id": "universal", "reader_languages": ["ru", "el", "en", "bg"], "explanation_language": "ru", "prayer_languages": ["el", "en", "bg"], "translation_languages": [], "apparatus_mode": "monolingual", "prayer_layout": "parallel_three_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/universal-el-en-bg.docx"},
+    {"id": "armenia-hy-ru", "corpus_id": "armenia", "reader_languages": ["ru"], "explanation_language": "ru", "prayer_languages": ["hy"], "translation_languages": ["ru"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/armenia-hy-ru.docx"},
+    {"id": "armenia-hy-en", "corpus_id": "armenia", "reader_languages": ["en"], "explanation_language": "en", "prayer_languages": ["hy"], "translation_languages": ["en"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/armenia-hy-en.docx"},
+    {"id": "bulgaria-bg-ru", "corpus_id": "bulgaria", "reader_languages": ["ru"], "explanation_language": "ru", "prayer_languages": ["bg"], "translation_languages": ["ru"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/bulgaria-bg-ru.docx"},
+    {"id": "bulgaria-bg-en", "corpus_id": "bulgaria", "reader_languages": ["en"], "explanation_language": "en", "prayer_languages": ["bg"], "translation_languages": ["en"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/bulgaria-bg-en.docx"},
+    {"id": "cyprus-el-ru", "corpus_id": "cyprus", "reader_languages": ["ru"], "explanation_language": "ru", "prayer_languages": ["el"], "translation_languages": ["ru"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/cyprus-el-ru.docx"},
+    {"id": "cyprus-el-en", "corpus_id": "cyprus", "reader_languages": ["en"], "explanation_language": "en", "prayer_languages": ["el"], "translation_languages": ["en"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/cyprus-el-en.docx"},
+    {"id": "russia-cu-ru", "corpus_id": "russia", "reader_languages": ["ru"], "explanation_language": "ru", "prayer_languages": ["cu"], "translation_languages": ["ru"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/russia-cu-ru.docx"},
+    {"id": "russia-cu-en", "corpus_id": "russia", "reader_languages": ["en"], "explanation_language": "en", "prayer_languages": ["cu"], "translation_languages": ["en"], "apparatus_mode": "monolingual", "prayer_layout": "parallel_two_columns", "historical_edition": null, "pronunciation": null, "status": "blocked_missing_verified_segments", "docx": "deliverables/editions/russia-cu-en.docx"}
+  ]
+}

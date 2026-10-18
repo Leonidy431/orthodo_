@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "corpus_id": "russia",
+  "status": "pending_verified_language_segments",
+  "explanation_group_ids": ["R01", "R02", "R05", "R09", "R10", "R12"],
+  "prayer_group_ids": ["R08"],
+  "group_chapters": {"R01": 1, "R02": 2, "R05": 5, "R08": 8, "R09": 9, "R10": 10, "R12": 12},
+  "segments": [],
+  "note": "Church Slavonic cu originals cannot be replaced by modern Russian ru; no verified recension or translation is available."
+}

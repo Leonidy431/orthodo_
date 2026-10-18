@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "corpus_id": "bulgaria",
+  "status": "pending_verified_language_segments",
+  "explanation_group_ids": ["B01", "B02", "B05", "B09", "B10", "B12"],
+  "prayer_group_ids": ["B08"],
+  "group_chapters": {"B01": 1, "B02": 2, "B05": 5, "B08": 8, "B09": 9, "B10": 10, "B12": 12},
+  "segments": [],
+  "note": "Actual prayer language and edition must be verified; a Bulgarian catalogue entry is not a verified Bulgarian prayer segment."
+}

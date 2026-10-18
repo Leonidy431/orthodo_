@@ -45,14 +45,17 @@ def xml_bytes(root):
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 
-def parse(source, title=None, require_table=True):
+def parse(source, title=None, require_table=True, table_headers=None):
     blocks = []
     rows = []
+    headers = table_headers or HEADER
+    if len(headers) not in {2, 3}:
+        raise ValueError("Only two- or three-language parallel tables supported")
 
     def finish_table():
         if rows:
-            if rows[0] != HEADER or len(rows) < 2:
-                raise ValueError("A three-language table must have a header and content")
+            if rows[0] != headers or len(rows) < 2:
+                raise ValueError("A parallel language table must have a header and content")
             blocks.append(("table", list(rows)))
             rows.clear()
 
@@ -62,8 +65,8 @@ def parse(source, title=None, require_table=True):
             if not line.endswith("|"):
                 raise ValueError("Unclosed table row")
             cells = [cell.strip() for cell in line[1:-1].split("|")]
-            if len(cells) != 3 or any(not cell for cell in cells):
-                raise ValueError("Exactly three nonempty cells are required")
+            if len(cells) != len(headers) or any(not cell for cell in cells):
+                raise ValueError("Exactly one nonempty cell per table language is required")
             if not all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells):
                 rows.append(cells)
             continue
@@ -122,7 +125,11 @@ def font_coverage(text):
     return results
 
 
-def build(blocks, landscape=True):
+def build(blocks, landscape=True, table_languages=None):
+    languages = table_languages or ("el-GR", "en-US", "bg-BG")
+    if len(languages) not in {2, 3}:
+        raise ValueError("Only two- or three-language parallel tables supported")
+    column_width = 14400 // len(languages)
     document = ET.Element(f"{{{W}}}document")
     body = element(document, "body")
     relationships = ET.Element(f"{{{P}}}Relationships")
@@ -200,17 +207,19 @@ def build(blocks, landscape=True):
             for side in ("top", "left", "bottom", "right"):
                 element(margins, side, {"w": 120, "type": "dxa"})
             grid = element(table, "tblGrid")
-            for _ in range(3):
-                element(grid, "gridCol", {"w": 4800})
+            for _ in languages:
+                element(grid, "gridCol", {"w": column_width})
             for index, cells in enumerate(value):
+                if len(cells) != len(languages):
+                    raise ValueError("Table row/language count mismatch")
                 row = element(table, "tr")
                 if index == 0:
                     element(element(row, "trPr"), "tblHeader", {"val": "true"})
                 # No fixed row heights or cantSplit: long content can flow across pages.
-                for text, language in zip(cells, ("el-GR", "en-US", "bg-BG")):
+                for text, language in zip(cells, languages):
                     cell = element(row, "tc")
                     cell_props = element(cell, "tcPr")
-                    element(cell_props, "tcW", {"w": 4800, "type": "dxa"})
+                    element(cell_props, "tcW", {"w": column_width, "type": "dxa"})
                     paragraph(cell, text, language=language, table_header=index == 0)
         else:
             paragraph(body, value, kind if kind.startswith("h") else None,
@@ -267,7 +276,9 @@ def build(blocks, landscape=True):
     return output.getvalue(), expected
 
 
-def validate(content, expected, require_table=True, landscape=True):
+def validate(content, expected, require_table=True, landscape=True, table_columns=3):
+    if table_columns not in {2, 3}:
+        raise ValueError("Expected two or three table columns")
     ns = {"w": W}
     with zipfile.ZipFile(io.BytesIO(content)) as archive:
         if archive.testzip() is not None:
@@ -297,11 +308,11 @@ def validate(content, expected, require_table=True, landscape=True):
             raise ValueError("Missing table")
         for table in tables:
             for row in table.findall("w:tr", ns):
-                if len(row.findall("w:tc", ns)) != 3:
-                    raise ValueError("Expected three cells in every table row")
+                if len(row.findall("w:tc", ns)) != table_columns:
+                    raise ValueError("Wrong number of parallel cells")
             if table.find("w:tr/w:trPr/w:tblHeader", ns) is None:
                 raise ValueError("Missing repeating header")
-            if [col.get(f"{{{W}}}w") for col in table.findall("w:tblGrid/w:gridCol", ns)] != ["4800"] * 3:
+            if [col.get(f"{{{W}}}w") for col in table.findall("w:tblGrid/w:gridCol", ns)] != [str(14400 // table_columns)] * table_columns:
                 raise ValueError("Unequal columns")
         size = root.find(".//w:sectPr/w:pgSz", ns)
         if size is None or size.get(f"{{{W}}}orient") != ("landscape" if landscape else "portrait"):

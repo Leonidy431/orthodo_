@@ -11,6 +11,7 @@ import subprocess
 import time
 
 import book_pipeline as core
+import book_editions as editions
 import build_word_third_attempt as word
 
 
@@ -39,6 +40,10 @@ def fingerprint(root):
         root / "data/jurisdictions.json",
         *sorted((root / "books").glob("*/manuscript.md")),
         *sorted((root / "books").glob("*/sources.json")),
+        *sorted((root / "books").glob("*/segments.json")),
+        *sorted((root / "books").glob("editions.json")),
+        *sorted((root / "data/research").glob("*.json")),
+        *sorted((root / "docs").glob("*.md")),
         *sorted((root / "scripts").glob("*.py")),
     ]
     digest = hashlib.sha256()
@@ -110,7 +115,10 @@ def phase_result(phase, root, state, deadline):
         for name in ("HLD.md", "phases.md", "scope.md", "five-book-plan.md", "evidence-matrix.md", "jurisdictions.md"):
             if not (root / "docs" / name).is_file():
                 return "blocked", f"Missing architecture output: {name}"
-        return "passed", "Five IDs, scope and evidence schemas validated; not substantive books"
+        editions.features(root)
+        targets = editions.report(root)
+        state["editions"] = targets
+        return "passed", "Five corpora, nine language targets and 99 feature records validated; not substantive books"
     if phase == "P2":
         source_map = {s["id"]: s for s in evidence["sources"]}
         jurisdiction_map = {j["id"]: j for j in registry["jurisdictions"]}
@@ -143,17 +151,22 @@ def phase_result(phase, root, state, deadline):
             return "blocked", "Jurisdiction registry open or no fully confirmed contextual intersection"
         return "needs_human", "Intersection candidates require comparative editorial interpretation"
     if phase == "P4":
+        targets = editions.report(root)
+        state["editions"] = targets
+        if any(e["status"] == "blocked_missing_segments" for e in targets["editions"]):
+            return "blocked", "Nine language targets lack required aligned, rights-cleared MVP segments; no invented translations"
         if any(b["verified_claims"] == 0 or b["status"] != "verified_working_text" for b in manifest["books"]):
             return "blocked", "Five authorial research drafts are not five verified substantive guides"
         return "needs_human", "Substantive manuscripts require source and language editorial approval"
     if phase == "P5":
+        state["editions"] = editions.report(root)
         artifacts = []
         for book in manifest["books"]:
             if time.monotonic() >= deadline:
                 return "blocked", "Time budget reached during layout stage; resume available"
             artifacts.append(book_build(root, book, evidence, write=True))
             state["artifacts"] = artifacts
-        return "needs_human", "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending"
+        return "needs_human", "Five legacy DOCX draft layouts built; nine language targets separately reported, not generated; rendering and substantive acceptance pending"
     incomplete = [
         p for p in PHASES[:-1]
         if state["phases"][p]["status"] != "passed"

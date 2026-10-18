@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "corpus_id": "armenia",
+  "status": "pending_verified_language_segments",
+  "explanation_group_ids": ["A01", "A02", "A05", "A09", "A10", "A12"],
+  "prayer_group_ids": ["A08"],
+  "group_chapters": {"A01": 1, "A02": 2, "A05": 5, "A08": 8, "A09": 9, "A10": 10, "A12": 12},
+  "segments": [],
+  "note": "No Armenian text, modern/classical variety, pronunciation or translation is invented from the predominantly transliterated Pew Book II lead."
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "corpus_id": "universal",
+  "status": "pending_verified_language_segments",
+  "explanation_group_ids": ["U01", "U02", "U05", "U09", "U10", "U12"],
+  "prayer_group_ids": ["U08"],
+  "group_chapters": {"U01": 1, "U02": 2, "U05": 5, "U08": 8, "U09": 9, "U10": 10, "U12": 12},
+  "segments": [],
+  "note": "Legacy EL/EN/BG questions are editorial questions, not verified parallel prayer versions. No empty segment is counted as a translation."
+}

@@ -2,6 +2,9 @@
   "schema_version": 1,
   "author": "Гаврилов Леонид Геннадьевич",
   "year": 2026,
+  "edition_manifest": "books/editions.json",
+  "target_edition_count": 9,
+  "legacy_layouts_are_not_target_editions": true,
   "status": "five_docx_draft_layouts_not_finished_guides",
   "books": [
     {"id": "universal", "title": "Впервые в храме: общее и различия в исследуемых церковных традициях", "languages": ["RU", "EL", "EN", "BG"], "layout": "parallel_three_columns", "scope": "expanded_scope_and_armenian_apostolic", "manuscript": "books/universal/manuscript.md", "sources": "books/universal/sources.json", "docx": "deliverables/universal.docx", "status": "draft_layout", "verified_claims": 0},

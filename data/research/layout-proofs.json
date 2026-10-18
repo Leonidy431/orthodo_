@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "editorial_question_layout_proof_not_prayer_translation",
+  "attribution": "Original compiler questions from the third-attempt draft; not a third-party prayerbook.",
+  "independent_language_check": "Earlier language-editor reviewed these question correspondences as AI; not certified native editing.",
+  "languages": ["el-GR", "en-US", "bg-BG"],
+  "headers": ["Ελληνικά", "English", "Български"],
+  "rows": [
+    {"id": "entry", "el-GR": "Μπορώ να μπω τώρα χωρίς να ενοχλήσω την ακολουθία;", "en-US": "May I enter now without disturbing the service?", "bg-BG": "Мога ли да вляза сега, без да преча на богослужението?"},
+    {"id": "place", "el-GR": "Πού μπορώ να σταθώ;", "en-US": "Where may I stand?", "bg-BG": "Къде мога да застана?"},
+    {"id": "text", "el-GR": "Ποιο κείμενο προσευχής χρησιμοποιείται σε αυτή την κοινότητα;", "en-US": "Which prayer text is used in this community?", "bg-BG": "Кой молитвен текст се използва в тази общност?"},
+    {"id": "exit", "el-GR": "Πότε μπορώ να φύγω χωρίς να ενοχλήσω τους άλλους;", "en-US": "When may I leave without disturbing others?", "bg-BG": "Кога мога да си тръгна, без да преча на другите?"}
+  ]
+}

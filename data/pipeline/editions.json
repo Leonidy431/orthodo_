@@ -1,0 +1,280 @@
+{
+  "target_editions": 9,
+  "content_corpora": 5,
+  "target_files_existing": 0,
+  "accepted_editions": 0,
+  "editions": [
+    {
+      "id": "universal-el-en-bg",
+      "corpus_id": "universal",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "U01:apparatus:ru",
+        "U02:apparatus:ru",
+        "U05:apparatus:ru",
+        "U09:apparatus:ru",
+        "U10:apparatus:ru",
+        "U12:apparatus:ru",
+        "U08:prayer_original:el",
+        "U08:prayer_original:en",
+        "U08:prayer_original:bg"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": null,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "armenia-hy-ru",
+      "corpus_id": "armenia",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "A01:apparatus:ru",
+        "A02:apparatus:ru",
+        "A05:apparatus:ru",
+        "A09:apparatus:ru",
+        "A10:apparatus:ru",
+        "A12:apparatus:ru",
+        "A08:prayer_original:hy",
+        "A08:prayer_translation:ru"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "armenia-hy-en",
+      "corpus_id": "armenia",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "A01:apparatus:en",
+        "A02:apparatus:en",
+        "A05:apparatus:en",
+        "A09:apparatus:en",
+        "A10:apparatus:en",
+        "A12:apparatus:en",
+        "A08:prayer_original:hy",
+        "A08:prayer_translation:en"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "bulgaria-bg-ru",
+      "corpus_id": "bulgaria",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "B01:apparatus:ru",
+        "B02:apparatus:ru",
+        "B05:apparatus:ru",
+        "B09:apparatus:ru",
+        "B10:apparatus:ru",
+        "B12:apparatus:ru",
+        "B08:prayer_original:bg",
+        "B08:prayer_translation:ru"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "bulgaria-bg-en",
+      "corpus_id": "bulgaria",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "B01:apparatus:en",
+        "B02:apparatus:en",
+        "B05:apparatus:en",
+        "B09:apparatus:en",
+        "B10:apparatus:en",
+        "B12:apparatus:en",
+        "B08:prayer_original:bg",
+        "B08:prayer_translation:en"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "cyprus-el-ru",
+      "corpus_id": "cyprus",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "C01:apparatus:ru",
+        "C02:apparatus:ru",
+        "C05:apparatus:ru",
+        "C09:apparatus:ru",
+        "C10:apparatus:ru",
+        "C12:apparatus:ru",
+        "C08:prayer_original:el",
+        "C08:prayer_translation:ru"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "cyprus-el-en",
+      "corpus_id": "cyprus",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "C01:apparatus:en",
+        "C02:apparatus:en",
+        "C05:apparatus:en",
+        "C09:apparatus:en",
+        "C10:apparatus:en",
+        "C12:apparatus:en",
+        "C08:prayer_original:el",
+        "C08:prayer_translation:en"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "russia-cu-ru",
+      "corpus_id": "russia",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "R01:apparatus:ru",
+        "R02:apparatus:ru",
+        "R05:apparatus:ru",
+        "R09:apparatus:ru",
+        "R10:apparatus:ru",
+        "R12:apparatus:ru",
+        "R08:prayer_original:cu",
+        "R08:prayer_translation:ru"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    },
+    {
+      "id": "russia-cu-en",
+      "corpus_id": "russia",
+      "status": "blocked_missing_segments",
+      "missing_slots": [
+        "R01:apparatus:en",
+        "R02:apparatus:en",
+        "R05:apparatus:en",
+        "R09:apparatus:en",
+        "R10:apparatus:en",
+        "R12:apparatus:en",
+        "R08:prayer_original:cu",
+        "R08:prayer_translation:en"
+      ],
+      "missing_mvp_chapters": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "required_segment_completeness_percent": 0.0,
+      "translation_completeness_percent": 0.0,
+      "ready_to_publish": false,
+      "reason": "No missing slots is still not ecclesiastical, language or visual approval",
+      "target_file_exists": false,
+      "file_existence_is_not_acceptance": true
+    }
+  ],
+  "network_requests": 0
+}

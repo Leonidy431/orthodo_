@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "corpus_id": "cyprus",
+  "status": "pending_verified_language_segments",
+  "explanation_group_ids": ["C01", "C02", "C05", "C09", "C10", "C12"],
+  "prayer_group_ids": ["C08"],
+  "group_chapters": {"C01": 1, "C02": 2, "C05": 5, "C08": 8, "C09": 9, "C10": 10, "C12": 12},
+  "segments": [],
+  "note": "Greek originals and Russian/English translations await exact edition, local applicability and rights verification."
+}
