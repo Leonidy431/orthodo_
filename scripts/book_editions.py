@@ -88,6 +88,13 @@ def validate_manifest(root):
             raise ValueError("Wrong prayer-block layout")
         if not {"historical_edition", "pronunciation", "status"} <= row.keys():
             raise ValueError("Edition must expose unresolved recension/pronunciation explicitly")
+        if not isinstance(row["segment_selection"], dict):
+            raise ValueError("Each edition must explicitly select exact segment variants")
+        for selection in row["segment_selection"].values():
+            if not isinstance(selection, dict) or set(selection) != {
+                "segment_id", "historical_edition", "language_variety", "pronunciation",
+            }:
+                raise ValueError("Selection must pin segment ID, recension, variety and pronunciation")
         core.project_path(root, row["docx"], "deliverables")
     return editions
 
@@ -110,7 +117,7 @@ def validate_corpus(data, source_map):
         required = {"id", "group_id", "chapter", "kind", "language", "text",
                     "verification", "source_id", "source_locator", "historical_edition",
                     "language_variety", "pronunciation", "translation_of", "translator",
-                    "translation_provenance", "regional_applicability"}
+                    "translation_provenance", "regional_applicability", "origin"}
         if not required <= row.keys():
             raise ValueError("Segment must preserve language, edition, translation and pronunciation metadata")
         if row["kind"] not in {"apparatus", "prayer_original", "prayer_translation", "transliteration"}:
@@ -126,7 +133,23 @@ def validate_corpus(data, source_map):
         prayer = row["kind"] != "apparatus"
         if (row["group_id"] in prayer_ids) != prayer or (prayer and row["chapter"] != 8):
             raise ValueError("Apparatus and prayer blocks must remain separate")
-        slot = (row["group_id"], row["language"], row["kind"])
+        if row["origin"] not in {"external", "author_created"}:
+            raise ValueError("Explicit external or author-created provenance required")
+        if row["origin"] == "author_created" and (
+            prayer or not row.get("attribution") or row.get("rights") != "project_original"
+            or row["source_id"] is not None
+        ):
+            raise ValueError("Only explicitly attributed original apparatus can use author-created provenance")
+        source = source_map.get(row["source_id"], {})
+        if row["verification"] == "confirmed" and row["origin"] == "external":
+            if not row["source_locator"] or not row["historical_edition"] or not core.publishable(source):
+                raise ValueError("Confirmed external segment needs text-specific rights and edition provenance")
+            if row["historical_edition"] != source["edition"]:
+                raise ValueError("Segment recension differs from its exact source edition")
+            if row["language"] not in source.get("languages", []):
+                raise ValueError("Exact source must document this segment language")
+        slot = (row["group_id"], row["language"], row["kind"], row["historical_edition"],
+                row["language_variety"], row["pronunciation"], row["translation_of"])
         if slot in slots:
             raise ValueError("Ambiguous duplicate language segment")
         slots.add(slot)
@@ -141,14 +164,7 @@ def validate_corpus(data, source_map):
             if original["kind"] != "prayer_original" or original["group_id"] != row["group_id"]:
                 raise ValueError("Transliteration must reference its own group's original")
             continue
-        source = source_map.get(row["source_id"], {})
         if row["verification"] == "confirmed":
-            if not row["source_locator"] or not row["historical_edition"] or not core.publishable(source):
-                raise ValueError("Confirmed prayer needs text-specific rights and edition provenance")
-            if row["historical_edition"] != source["edition"]:
-                raise ValueError("Segment recension differs from its exact source edition")
-            if row["language"] not in source.get("languages", []):
-                raise ValueError("Exact source must document this prayer/translation language")
             if row["language"] == "hy":
                 if row["language_variety"] not in {"classical", "modern_eastern", "modern_western"}:
                     raise ValueError("Armenian variety must be explicit")
@@ -181,39 +197,41 @@ def validate_corpus(data, source_map):
 
 
 def edition_status(edition, corpus):
-    """Completeness is by required slots, never by presence of any language somewhere."""
-    rows = [row for row in corpus["segments"] if row["verification"] == "confirmed"]
-    missing, required_count, translation_count, missing_translations = [], 0, 0, 0
-    for group in corpus["explanation_group_ids"]:
-        required_count += 1
-        if not any(r["group_id"] == group and r["kind"] == "apparatus"
-                   and r["language"] == edition["explanation_language"] for r in rows):
-            missing.append(f"{group}:apparatus:{edition['explanation_language']}")
+    """Count exact selected variants, never an arbitrary matching-language segment."""
+    slots = [(g, "apparatus", edition["explanation_language"]) for g in corpus["explanation_group_ids"]]
     for group in corpus["prayer_group_ids"]:
-        originals = [r for r in rows if r["group_id"] == group and r["kind"] == "prayer_original"]
-        for language in edition["prayer_languages"]:
-            required_count += 1
-            if not any(r["language"] == language for r in originals):
-                missing.append(f"{group}:prayer_original:{language}")
-        for language in edition["translation_languages"]:
-            required_count += 1
-            translation_count += 1
-            aligned = [
-                r for r in rows if r["group_id"] == group and r["kind"] == "prayer_translation"
-                and r["language"] == language
-                and any(o["id"] == r["translation_of"] and o["language"] in edition["prayer_languages"] for o in originals)
-            ]
-            if not aligned:
-                missing.append(f"{group}:prayer_translation:{language}")
-                missing_translations += 1
-    covered_chapters = {r["chapter"] for r in rows if r["kind"] != "transliteration"
-                        and r["language"] in {edition["explanation_language"], *edition["prayer_languages"], *edition["translation_languages"]}}
+        slots.extend((group, "prayer_original", lang) for lang in edition["prayer_languages"])
+        slots.extend((group, "prayer_translation", lang) for lang in edition["translation_languages"])
+    slot_keys = {":".join(slot) for slot in slots}
+    if not set(edition["segment_selection"]) <= slot_keys:
+        raise ValueError("Selection contains a slot outside this edition")
+    by_id = {r["id"]: r for r in corpus["segments"] if r["verification"] == "confirmed"}
+    selected, missing = {}, []
+    for group, kind, language in slots:
+        key = f"{group}:{kind}:{language}"
+        pin = edition["segment_selection"].get(key, {})
+        row = by_id.get(pin.get("segment_id"))
+        if (not row or (row["group_id"], row["kind"], row["language"]) != (group, kind, language)
+                or any(pin.get(field) != row[field] for field in ("historical_edition", "language_variety", "pronunciation"))):
+            missing.append(key)
+        else:
+            selected[key] = row
+    for key, row in list(selected.items()):
+        if row["kind"] == "prayer_translation" and not any(
+            r["id"] == row["translation_of"] and r["kind"] == "prayer_original"
+            and r["group_id"] == row["group_id"] for r in selected.values()
+        ):
+            missing.append(key)
+            del selected[key]
+    translation_count = sum(kind == "prayer_translation" for _, kind, _ in slots)
+    missing_translations = sum(":prayer_translation:" in key for key in missing)
+    covered_chapters = {r["chapter"] for r in selected.values()}
     missing_chapters = sorted(MVP - covered_chapters)
     return {
         "id": edition["id"], "corpus_id": edition["corpus_id"],
         "status": "blocked_missing_segments" if missing or missing_chapters else "needs_human",
         "missing_slots": missing, "missing_mvp_chapters": missing_chapters,
-        "required_segment_completeness_percent": 100 * (required_count - len(missing)) / required_count,
+        "required_segment_completeness_percent": 100 * (len(slots) - len(missing)) / len(slots),
         "translation_completeness_percent": (
             100 * (translation_count - missing_translations) / translation_count
             if translation_count else None

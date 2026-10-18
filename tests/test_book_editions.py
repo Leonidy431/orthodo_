@@ -41,6 +41,7 @@ class EditionTests(unittest.TestCase):
             "translator": "Synthetic test only" if original else None,
             "translation_provenance": "Test fixture" if original else None,
             "regional_applicability": {},
+            "origin": "external",
         }
 
     def complete(self):
@@ -50,6 +51,12 @@ class EditionTests(unittest.TestCase):
         self.corpus["segments"] += [
             original, self.row("ru", "prayer_translation", "R08", 8, original["id"]),
         ]
+        self.edition["segment_selection"] = {
+            f"{r['group_id']}:{r['kind']}:{r['language']}": {
+                "segment_id": r["id"],
+                **{key: r[key] for key in ("historical_edition", "language_variety", "pronunciation")},
+            } for r in self.corpus["segments"]
+        }
         return self.corpus
 
     def test_exact_matrix_and_actual_count(self):
@@ -113,6 +120,9 @@ class EditionTests(unittest.TestCase):
         self.corpus["prayer_group_ids"].append("R08-b")
         self.corpus["group_chapters"]["R08-b"] = 8
         self.corpus["segments"].append(self.row("cu", "prayer_original", "R08-b", 8))
+        pin = copy.deepcopy(self.edition["segment_selection"]["R08:prayer_original:cu"])
+        pin["segment_id"] = self.corpus["segments"][-1]["id"]
+        self.edition["segment_selection"]["R08-b:prayer_original:cu"] = pin
         editions.validate_corpus(self.corpus, self.sources)
         result = editions.edition_status(self.edition, self.corpus)
         self.assertEqual(result["translation_completeness_percent"], 50)
@@ -181,6 +191,63 @@ class EditionTests(unittest.TestCase):
                 corpus["segments"].append(extra)
             with self.assertRaises(ValueError):
                 editions.validate_corpus(corpus, self.sources)
+
+    def test_external_apparatus_and_transliteration_cannot_skip_rights(self):
+        self.complete()
+        for kind in ("apparatus", "transliteration"):
+            corpus = copy.deepcopy(self.corpus)
+            row = corpus["segments"][0] if kind == "apparatus" else corpus["segments"][-1]
+            row["kind"] = kind
+            row["source_id"] = "nonexistent"
+            with self.assertRaisesRegex(ValueError, "rights"):
+                editions.validate_corpus(corpus, self.sources)
+
+    def test_author_created_apparatus_requires_explicit_attribution(self):
+        self.complete()
+        row = self.corpus["segments"][0]
+        row.update(origin="author_created", source_id=None)
+        with self.assertRaisesRegex(ValueError, "attributed"):
+            editions.validate_corpus(self.corpus, self.sources)
+        row.update(attribution="Synthetic compiler fixture", rights="project_original")
+        editions.validate_corpus(self.corpus, self.sources)
+        self.corpus["segments"][-2].update(origin="author_created", source_id=None, attribution="test", rights="project_original")
+        with self.assertRaisesRegex(ValueError, "apparatus"):
+            editions.validate_corpus(self.corpus, self.sources)
+
+    def test_variants_coexist_but_cannot_satisfy_another_selection(self):
+        self.complete()
+        extra = copy.deepcopy(self.corpus["segments"][-2])
+        extra.update(id="different-recension", historical_edition="test-v2", source_id="cu-v2")
+        self.sources["cu-v2"] = dict(self.sources["cu"], edition="test-v2")
+        self.corpus["segments"].append(extra)
+        editions.validate_corpus(self.corpus, self.sources)
+        self.assertEqual(editions.edition_status(self.edition, self.corpus)["status"], "needs_human")
+        pin = self.edition["segment_selection"]["R08:prayer_original:cu"]
+        pin["segment_id"] = extra["id"]
+        result = editions.edition_status(self.edition, self.corpus)
+        self.assertIn("R08:prayer_original:cu", result["missing_slots"])
+        pin["historical_edition"] = "test-v2"
+        result = editions.edition_status(self.edition, self.corpus)
+        self.assertNotIn("R08:prayer_original:cu", result["missing_slots"])
+        self.assertIn("R08:prayer_translation:ru", result["missing_slots"])
+
+    def test_armenian_variants_and_pronunciation_selection(self):
+        corpus = core.read_json(ROOT / "books/armenia/segments.json")
+        classical = self.row("hy", "prayer_original", "A08", 8)
+        classical.update(language_variety="classical", pronunciation="western")
+        modern = copy.deepcopy(classical)
+        modern.update(id="modern-hy", language_variety="modern_eastern", pronunciation="eastern")
+        modern["regional_applicability"] = {
+            "territory": "Армения", "verification": "confirmed", "source_id": "hy", "locator": "test",
+        }
+        corpus["segments"] = [classical, modern]
+        editions.validate_corpus(corpus, self.sources)
+        target = copy.deepcopy(next(e for e in self.manifest["editions"] if e["id"] == "armenia-hy-ru"))
+        target["segment_selection"] = {"A08:prayer_original:hy": {
+            "segment_id": modern["id"], "historical_edition": "test-v1",
+            "language_variety": "classical", "pronunciation": "western",
+        }}
+        self.assertIn("A08:prayer_original:hy", editions.edition_status(target, corpus)["missing_slots"])
 
     def test_99_features_markdown_matches_ids_and_boundaries(self):
         rows = editions.features(ROOT)
