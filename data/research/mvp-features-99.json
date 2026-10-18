@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "evidence_origin": "User comment 6250198716 reports limited external research; no own primary reinspection succeeded.",
+  "inheritance": "Each feature inherits kind, source_ids, transfer_limit, applicable_books and verification from its group; its own locator, description and priority are explicit. scripts/book_editions.py expands these fields before validation.",
+  "sources": {
+    "A": {"urls": ["https://www.qahana.am/spirituallibrary/b3db79d6c31c97e3a2e996b0cbb1dcda.pdf"], "supplied_scope": "Introduction and How to Use this Book of available Pew Book II; not full Armenian corpus.", "own_check": "2026-10-18 web_fetch DNS lookup failed", "rights": "unknown"},
+    "B": {"urls": ["https://holycrossbookstore.com/products/daily-prayers-for-orthodox-christians"], "supplied_scope": "Publisher description and contents, not complete book.", "own_check": "2026-10-18 web_fetch DNS lookup failed", "rights": "unknown"},
+    "C": {"urls": ["https://st-innocent.org/12things"], "supplied_scope": "Parish article, not normative document.", "own_check": "2026-10-18 web_fetch DNS lookup failed", "rights": "unknown"},
+    "D": {"urls": ["https://www.holycrossonline.org/welcome-to-the-orthodox-church", "https://www.stgeorgepdx.org/Intro2OrthodoxChurch.html"], "supplied_scope": "Description and accompanying themes, not full text.", "own_check": "First URL web_fetch DNS lookup failed; second URL not independently retrieved.", "rights": "unknown"}
+  },
+  "groups": [
+    {
+      "id": "A", "kind": "observed", "source_ids": ["A"], "verification": "provided_research_not_independently_verified",
+      "transfer_limit": "Pew Book II is predominantly transliteration/English. Full-structure description is not proof of a full Armenian corpus here. Western pronunciation must not be assumed applicable in Armenia. No copying or normative transfer.",
+      "applicable_books": ["armenia"],
+      "features": [
+        {"id": "A01", "description": "Инструкция пользования до основной практической части.", "locator": "How to Use this Book, reported section; page unknown", "priority": "MVP"},
+        {"id": "A02", "description": "Введение объясняет читателю назначение книги перед текстами.", "locator": "Introduction, reported section; page unknown", "priority": "MVP"},
+        {"id": "A03", "description": "Описание полной структуры различает классический и современный армянский.", "locator": "Introduction / description of complete two-part structure; not verified in available corpus", "priority": "MVP"},
+        {"id": "A04", "description": "Английский перевод отделяется от исходного молитвенного языка.", "locator": "How to Use this Book / language arrangement, reported; page unknown", "priority": "MVP"},
+        {"id": "A05", "description": "Транслитерация служит отдельным средством чтения, ориентированным на западное произношение.", "locator": "How to Use this Book / transliteration, reported; page unknown", "priority": "next"},
+        {"id": "A06", "description": "Соответствующая пагинация помогает сопоставлять языковые части.", "locator": "How to Use this Book / pagination, reported; page unknown", "priority": "next"},
+        {"id": "A07", "description": "Пояснения действий размещаются рядом с соответствующим текстом.", "locator": "How to Use this Book / action explanations, reported; page unknown", "priority": "MVP"},
+        {"id": "A08", "description": "Слышимые и тихие молитвы обозначаются раздельно.", "locator": "How to Use this Book / audible and silent prayers, reported; page unknown", "priority": "next"},
+        {"id": "A09", "description": "Обозначения положений тела связываются с местом в службе.", "locator": "How to Use this Book / bodily positions, reported; page unknown", "priority": "next"}
+      ]
+    },
+    {
+      "id": "B", "kind": "observed", "source_ids": ["B"], "verification": "provided_research_not_independently_verified",
+      "transfer_limit": "Only publisher description/contents reported. Byzantine prayer cycle and communion preparation are not established common practice of all traditions. Text/translation rights unknown.",
+      "applicable_books": ["universal", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "B01", "description": "Компактный формат ограничивает объём материала для повседневного использования.", "locator": "Publisher description / compact format, reported", "priority": "MVP"},
+        {"id": "B02", "description": "Символ веры выделен как самостоятельная тема молитвенной подборки.", "locator": "Contents / Creed, reported; exact heading not independently checked", "priority": "next"},
+        {"id": "B03", "description": "Утренние молитвы образуют отдельный раздел.", "locator": "Contents / morning prayers, reported", "priority": "next"},
+        {"id": "B04", "description": "Молитвы трапезы отделены от храмового маршрута.", "locator": "Contents / mealtime prayers, reported", "priority": "later"},
+        {"id": "B05", "description": "Молитвы перед сном собраны как отдельная бытовая ситуация.", "locator": "Contents / bedtime prayers, reported", "priority": "later"},
+        {"id": "B06", "description": "Шестопсалмие представлено отдельной частью молитвенного материала.", "locator": "Contents / Six Psalms, reported", "priority": "later"},
+        {"id": "B07", "description": "Малое повечерие выделяется как чин, а не отдельная короткая молитва.", "locator": "Contents / Small Compline, reported", "priority": "later"},
+        {"id": "B08", "description": "Подготовка к причащению имеет отдельный тематический раздел.", "locator": "Contents / preparation for communion, reported", "priority": "next"},
+        {"id": "B09", "description": "Благодарение после причащения не смешивается с подготовкой к нему.", "locator": "Contents / thanksgiving after communion, reported", "priority": "next"}
+      ]
+    },
+    {
+      "id": "C", "kind": "observed", "source_ids": ["C"], "verification": "provided_research_not_independently_verified",
+      "transfer_limit": "Parish article supplies questions, not universal norms. Jurisdiction, date, communion claims and local practices need separate current sources.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "C01", "description": "Вопрос входа рассматривается и для ситуации, когда служба уже идёт.", "locator": "Parish article / arriving during service, reported; exact section unknown", "priority": "MVP"},
+        {"id": "C02", "description": "Стояние и сидение формулируются как практический вопрос посетителя.", "locator": "Parish article / standing and sitting, reported; exact section unknown", "priority": "MVP"},
+        {"id": "C03", "description": "Крестное знамение требует отдельного объяснения, а не предположенного навыка.", "locator": "Parish article / sign of cross, reported; exact section unknown", "priority": "next"},
+        {"id": "C04", "description": "Поклоны выделяются отдельно от крестного знамения.", "locator": "Parish article / bows, reported; exact section unknown", "priority": "next"},
+        {"id": "C05", "description": "Почитание икон и связанные жесты рассматриваются вместе с их контекстом.", "locator": "Parish article / icons and gestures, reported; exact section unknown", "priority": "next"},
+        {"id": "C06", "description": "Причастие и благословлённый хлеб требуют различения, не одного общего ярлыка.", "locator": "Parish article / communion and blessed bread, reported; exact section unknown", "priority": "MVP"},
+        {"id": "C07", "description": "Исповедь и общение со священником выделены как вопросы с отдельными условиями.", "locator": "Parish article / confession and speaking with priest, reported; exact section unknown", "priority": "MVP"},
+        {"id": "C08", "description": "Участие в пении рассматривается как отдельный вопрос новичка.", "locator": "Parish article / singing, reported; exact section unknown", "priority": "next"},
+        {"id": "C09", "description": "Принадлежность прихода к юрисдикции объясняется до переноса практических советов.", "locator": "Parish article / parish jurisdiction, reported; exact section unknown", "priority": "MVP"}
+      ]
+    },
+    {
+      "id": "D", "kind": "observed", "source_ids": ["D"], "verification": "provided_research_not_independently_verified",
+      "transfer_limit": "Book description/accompanying themes only. Gradual visits are a compositional idea, not invented author experience. Byzantine liturgy is not the Armenian Badarak.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "D01", "description": "Постепенные посещения храма используются как композиционная рамка освоения материала.", "locator": "Description / gradual visits, reported; which URL supplies each theme unresolved", "priority": "MVP"},
+        {"id": "D02", "description": "Пространство храма объясняется как самостоятельный предмет наблюдения.", "locator": "Accompanying themes / church space, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D03", "description": "Наличие или отсутствие скамей включается в вопросы о пространстве.", "locator": "Accompanying themes / pews, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D04", "description": "Литургия представлена отдельной темой ориентирования новичка.", "locator": "Accompanying themes / liturgy, reported; individual page attribution pending", "priority": "MVP"},
+        {"id": "D05", "description": "Вечерня отличена от основной воскресной службы.", "locator": "Accompanying themes / vespers, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D06", "description": "Повторение «Господи помилуй» рассматривается как вопрос понимания службы.", "locator": "Accompanying themes / repeated Lord have mercy, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D07", "description": "Ладан обозначен как отдельная тема объяснения чувственного опыта службы.", "locator": "Accompanying themes / incense, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D08", "description": "Хор и певчие получают объяснение как участники службы.", "locator": "Accompanying themes / choir and chanters, reported; individual page attribution pending", "priority": "next"},
+        {"id": "D09", "description": "Календарь и праздники связывают отдельный визит с годовым кругом.", "locator": "Accompanying themes / calendar and feasts, reported; individual page attribution pending", "priority": "later"}
+      ]
+    },
+    {
+      "id": "P-LANG", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Our language-edition design, not evidence of a prayer version or existing translation; missing verified material blocks publication.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "L01", "description": "Пять корпусов порождают девять целевых изданий без девяти независимых копий фактов.", "locator": "User comment 6250198716 / language matrix", "priority": "MVP"},
+        {"id": "L02", "description": "Язык читателя хранится отдельно от языка молитвенного блока.", "locator": "Project adaptation / reader audience", "priority": "MVP"},
+        {"id": "L03", "description": "Язык пояснений задаётся явно и не называется двуязычным при одном языке аппарата.", "locator": "Project adaptation / explanation language", "priority": "MVP"},
+        {"id": "L04", "description": "Для армянского различаются классический и современный варианты текста.", "locator": "Project adaptation / Armenian variety", "priority": "MVP"},
+        {"id": "L05", "description": "Восточное и западное армянское произношение маркируются отдельно от письма.", "locator": "Project adaptation / pronunciation", "priority": "next"},
+        {"id": "L06", "description": "Русский перевод молитвы не заменяет церковнославянский оригинал.", "locator": "Project adaptation / cu versus ru", "priority": "MVP"},
+        {"id": "L07", "description": "Транслитерация ссылается на исходный сегмент и не увеличивает число языков перевода.", "locator": "Project adaptation / transliteration link", "priority": "MVP"},
+        {"id": "L08", "description": "Отсутствующий перевод явно блокирует соответствующее языковое издание.", "locator": "Project adaptation / translation completeness gate", "priority": "MVP"},
+        {"id": "L09", "description": "Современный армянский текст требует отдельного подтверждения применимости к Армении.", "locator": "Project adaptation / regional applicability", "priority": "MVP"}
+      ]
+    },
+    {
+      "id": "P-ROUTE", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Original reader-navigation requirements, not obligatory church ritual or reported personal experience.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "R01", "description": "Глава «Как пользоваться» различает молитву, пояснение и редакторскую оговорку.", "locator": "Project adaptation / chapter 1", "priority": "MVP"},
+        {"id": "R02", "description": "Подготовка к первому визиту предлагает вопросы об общине, а не универсальный дресс-код.", "locator": "Project adaptation / chapter 2", "priority": "MVP"},
+        {"id": "R03", "description": "Ситуация опоздавшего посетителя получает собственный контекст доказательства.", "locator": "Project adaptation / entry scenario", "priority": "MVP"},
+        {"id": "R04", "description": "Маршрут выбора места учитывает доступность без выдуманного общего разрешения.", "locator": "Project adaptation / place and accessibility", "priority": "MVP"},
+        {"id": "R05", "description": "Переход от наблюдения к участию отмечает изменение статуса вопроса.", "locator": "Project adaptation / participation transition", "priority": "MVP"},
+        {"id": "R06", "description": "Выход во время службы проверяется отдельно от входа.", "locator": "Project adaptation / departure", "priority": "MVP"},
+        {"id": "R07", "description": "Условные сцены маркируются явно и не приписываются биографии автора.", "locator": "Project adaptation / narrative honesty", "priority": "MVP"},
+        {"id": "R08", "description": "Одностраничная памятка содержит ссылки на полные обоснования пунктов.", "locator": "Project adaptation / chapter 12", "priority": "MVP"},
+        {"id": "R09", "description": "Короткий словарь не подменяет объяснение различий Бадарака и византийской литургии.", "locator": "Project adaptation / terminology", "priority": "next"}
+      ]
+    },
+    {
+      "id": "P-RULE", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Classification requirements only; no doctrinal interpretation or universal rule inferred from categories.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "C10", "description": "Обязательное правило имеет явно ограниченный контекст службы и общины.", "locator": "Project adaptation / mandatory category", "priority": "MVP"},
+        {"id": "C11", "description": "Запрет хранится отдельно от совета воздержаться.", "locator": "Project adaptation / forbidden versus discouraged", "priority": "MVP"},
+        {"id": "C12", "description": "Действие по разрешению указывает, чьё разрешение и в каком контексте требуется.", "locator": "Project adaptation / permission authority", "priority": "MVP"},
+        {"id": "C13", "description": "Допустимое при условиях сохраняет сами условия рядом с формулировкой.", "locator": "Project adaptation / conditional permission", "priority": "MVP"},
+        {"id": "C14", "description": "Локальный обычай не проходит фильтр всеобщего запрета.", "locator": "Project adaptation / local custom", "priority": "MVP"},
+        {"id": "C15", "description": "Неизвестное не интерпретируется как разрешение или как ложность нормы.", "locator": "Project adaptation / unknown logic", "priority": "MVP"},
+        {"id": "C16", "description": "Конфликтующие официальные позиции сохраняются без усредняющего балла.", "locator": "Project adaptation / conflict handling", "priority": "MVP"},
+        {"id": "C17", "description": "Исключение исключает абсолютное утверждение из универсального ядра.", "locator": "Project adaptation / exceptions", "priority": "MVP"},
+        {"id": "C18", "description": "Некрещёный посетитель, оглашаемый и член церкви имеют отдельные контексты.", "locator": "Project adaptation / visitor status", "priority": "MVP"}
+      ]
+    },
+    {
+      "id": "P-TEXT", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Text provenance controls, not permission to reproduce inaccessible originals or translations.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "T01", "description": "Каждая исходная молитва имеет собственный стабильный ID и источник редакции.", "locator": "Project adaptation / original segment", "priority": "MVP"},
+        {"id": "T02", "description": "Историческая редакция указывается отдельно от современного языка пояснения.", "locator": "Project adaptation / historical edition", "priority": "MVP"},
+        {"id": "T03", "description": "Перевод ссылается на конкретный оригинальный сегмент, а не только на название молитвы.", "locator": "Project adaptation / translation alignment", "priority": "MVP"},
+        {"id": "T04", "description": "Переводчик и происхождение перевода сохраняются даже при машинной подготовке.", "locator": "Project adaptation / translation provenance", "priority": "MVP"},
+        {"id": "T05", "description": "Право на современный перевод проверяется отдельно от возраста оригинала.", "locator": "Project adaptation / translation rights", "priority": "MVP"},
+        {"id": "T06", "description": "Разные окончания молитв не склеиваются в якобы официальную редакцию.", "locator": "Project adaptation / no merged recensions", "priority": "MVP"},
+        {"id": "T07", "description": "Построчное соответствие сохраняет один смысловой элемент в параллельной строке.", "locator": "Project adaptation / row alignment", "priority": "MVP"},
+        {"id": "T08", "description": "Составительское пояснение действия не встраивается в неизменяемый молитвенный текст.", "locator": "Project adaptation / apparatus boundary", "priority": "MVP"},
+        {"id": "T09", "description": "Исправления OCR и сомнительные знаки имеют видимую редакторскую запись.", "locator": "Project adaptation / transcription uncertainty", "priority": "next"}
+      ]
+    },
+    {
+      "id": "P-WORD", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Document-engineering goals; XML/font checks do not establish visual accessibility or correct rendering.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "W01", "description": "Белый фон и чёрный текст не зависят от заимствованных изображений.", "locator": "Project adaptation / restrained design", "priority": "MVP"},
+        {"id": "W02", "description": "Тёмно-красная инициаль сохраняет полную Unicode-графему.", "locator": "Project adaptation / initial", "priority": "MVP"},
+        {"id": "W03", "description": "Покрытие символов проверяется по фактически используемому шрифту и тексту.", "locator": "Project adaptation / font cmap", "priority": "MVP"},
+        {"id": "W04", "description": "Параллельная таблица повторяет шапку и не задаёт обрезающей высоты строк.", "locator": "Project adaptation / table pagination", "priority": "MVP"},
+        {"id": "W05", "description": "Язык каждого сегмента доступен в Word отдельно от языка интерфейса читателя.", "locator": "Project adaptation / language tags", "priority": "MVP"},
+        {"id": "W06", "description": "Контраст и иерархия не передают смысл только цветом.", "locator": "Project adaptation / grayscale", "priority": "MVP"},
+        {"id": "W07", "description": "Номера страниц и тонкие рубрики проверяются в реальном рендерере перед приёмкой.", "locator": "Project adaptation / visual gate", "priority": "MVP"},
+        {"id": "W08", "description": "Двуязычная проба проверяется отдельно от трёхъязычного разворота.", "locator": "Project adaptation / proof layouts", "priority": "MVP"},
+        {"id": "W09", "description": "Риск подстановки невстроенного шрифта явно сообщается пользователю.", "locator": "Project adaptation / font substitution", "priority": "MVP"}
+      ]
+    },
+    {
+      "id": "P-EDIT", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Editorial process requirements, not claims of completed human, native-language or ecclesiastical approval.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "E01", "description": "Источниковед различает предоставленное исследование и собственный просмотр.", "locator": "Project adaptation / evidence origin", "priority": "MVP"},
+        {"id": "E02", "description": "Религиовед проверяет семью и юрисдикцию до переноса правила.", "locator": "Project adaptation / church identity", "priority": "MVP"},
+        {"id": "E03", "description": "Языковой редактор проверяет полноту соответствующих переводных сегментов.", "locator": "Project adaptation / language review", "priority": "MVP"},
+        {"id": "E04", "description": "Литературная редактура не меняет проверенный текст молитвы.", "locator": "Project adaptation / immutable prayer text", "priority": "MVP"},
+        {"id": "E05", "description": "Технический редактор проверяет связь источника Markdown и Word-артефакта.", "locator": "Project adaptation / artifact integrity", "priority": "MVP"},
+        {"id": "E06", "description": "Датированные отношения общения и признания не копируются из старой приходской статьи.", "locator": "Project adaptation / current status", "priority": "next"},
+        {"id": "E07", "description": "Замечания и отклонённые предложения сохраняют основание решения.", "locator": "Project adaptation / review trail", "priority": "MVP"},
+        {"id": "E08", "description": "Недоступная независимая проверка заменяется явно обозначенным последовательным проходом.", "locator": "Project adaptation / review availability", "priority": "MVP"},
+        {"id": "E09", "description": "Приёмка не выдаёт ИИ-проверку за носительскую или церковную сертификацию.", "locator": "Project adaptation / honest certification", "priority": "MVP"}
+      ]
+    },
+    {
+      "id": "P-RUN", "kind": "proposed", "source_ids": [], "verification": "project_requirement_not_source_observation",
+      "transfer_limit": "Operational acceptance criteria; planned builds/features are not evidence of finished books or successful push.",
+      "applicable_books": ["universal", "armenia", "bulgaria", "cyprus", "russia"],
+      "features": [
+        {"id": "P01", "description": "MVP ограничивается главами 1,2,5,8,9,10,12 вместо полного суточного круга.", "locator": "Project adaptation / release scope", "priority": "MVP"},
+        {"id": "P02", "description": "Dry-run проверяется на отсутствие сети, записи, commit и push.", "locator": "Project adaptation / safe preview", "priority": "MVP"},
+        {"id": "P03", "description": "Resume сохраняет историю попыток и не объявляет прерванный шаг успешным.", "locator": "Project adaptation / resumability", "priority": "MVP"},
+        {"id": "P04", "description": "Лимиты времени и новых источников завершают ручной проход конечным состоянием.", "locator": "Project adaptation / bounded work", "priority": "MVP"},
+        {"id": "P05", "description": "Новая гипотеза обязательна перед повтором неизменённой ошибки.", "locator": "Project adaptation / retry discipline", "priority": "MVP"},
+        {"id": "P06", "description": "Число целевых сборок сверяется с девятью ID, отдельно от числа существующих файлов.", "locator": "Project adaptation / build accounting", "priority": "MVP"},
+        {"id": "P07", "description": "Содержательная готовность не следует из успешного ZIP/XML-теста.", "locator": "Project adaptation / acceptance separation", "priority": "MVP"},
+        {"id": "P08", "description": "Каждый полезный этап получает содержательный commit и подтверждённый обычный push.", "locator": "Project adaptation / incremental publication", "priority": "MVP"},
+        {"id": "P09", "description": "Финальный отчёт связывает реальные SHA, отдельные статусы изданий и следующий блокирующий шаг.", "locator": "Project adaptation / factual report", "priority": "MVP"}
+      ]
+    }
+  ]
+}
