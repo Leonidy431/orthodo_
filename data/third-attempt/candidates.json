@@ -122,6 +122,35 @@
       "imported": false,
       "source_sha256": null,
       "source_commit": null
+    },
+    {
+      "id": "EL-CY-001",
+      "title": "Προσευχητάριον",
+      "author": null,
+      "publisher": null,
+      "year": null,
+      "edition": null,
+      "language": ["EL"],
+      "tradition": "Greek Orthodox Cyprus; Trimythountos lead",
+      "material_type": "standalone_book_candidate",
+      "canonical_url": "https://imtrimythountos.org.cy/prosefxitarion/",
+      "full_text_url": "https://imtrimythountos.org.cy/wp-content/uploads/2022/01/PROSEYXHTARIO_IM-TRIMYTHOYNTOS-2021.pdf",
+      "git_url": null,
+      "format": "PDF_unretrieved",
+      "evidence_level": "search_only",
+      "evidence": "Search-indexed bishopric landing page offers a prayerbook PDF. Primary inspection failed DNS.",
+      "provisional_metadata": "Ιερά Μητρόπολις Τριμυθούντος; second edition 2021; ISBN 978-9925-7822-1-5. All awaiting title-page inspection.",
+      "filters": {"F1": null, "F2": null, "F3": null, "F4": null, "F5": null},
+      "publication_filters": {"P1": null, "P2": null, "P3": null},
+      "scores": [null, null, null, null, null, null, null, null, null, null, null, null],
+      "score_reasons": "See catalog EL-CY-001: twelve individually stated reasons and source URLs.",
+      "score_percent": null,
+      "completeness_percent": 0,
+      "rights": "unconfirmed_no_republication",
+      "downloaded": false,
+      "imported": false,
+      "source_sha256": null,
+      "source_commit": null
     }
   ]
 }

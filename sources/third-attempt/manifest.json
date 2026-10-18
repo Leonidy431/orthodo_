@@ -26,6 +26,13 @@
       ],
       "snapshot_commit": null,
       "decision": "Mixed-source web project. README reserves texts and art to respective holders. No blanket permission for requested texts. No import."
+    },
+    {
+      "url": "https://github.com/scentsofhome/orthodox-prayer-book",
+      "tool": "GitHub MCP get_file_contents, reported by cyprus-sources",
+      "files": [{"path": "README.md", "blob_sha": null}],
+      "snapshot_commit": null,
+      "decision": "Application; no explicit text license established. No clone or import."
     }
   ],
   "unresolved_identity_leads": [
@@ -43,6 +50,21 @@
     }
   ],
   "auxiliary_etiq_sources": [
+    {
+      "url": "https://churchofcyprus.org.cy/8418",
+      "evidence_level": "search_only",
+      "scope": "Cyprus pastoral article lead; not directly inspected and not a demonstrated binding regulation."
+    },
+    {
+      "url": "https://stjamesevanston.org/church-etiquette",
+      "evidence_level": "search_only",
+      "scope": "Armenian Apostolic English parish guidance lead; no general jurisdiction-wide rule inferred."
+    },
+    {
+      "url": "https://stpeterarmenianchurch.com/our-church/church-etiquette/",
+      "evidence_level": "search_only",
+      "scope": "Armenian Apostolic English parish guidance lead; no exact quotations verified."
+    },
     {
       "url": "https://rilskimanastir.org/bg/about/iziskvaniia-k-m-posetitelite/",
       "evidence_level": "search_only",

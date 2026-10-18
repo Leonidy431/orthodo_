@@ -89,6 +89,10 @@
 
 Церковь Кипра, «Προσευχητάριο: Πρωϊνή προσευχή»: https://churchofcyprus.org.cy/8571
 
+Митрополия Тримифунта, кандидат «Προσευχητάριον»; PDF и выходные данные не просмотрены: https://imtrimythountos.org.cy/prosefxitarion/
+
+Церковь Кипра, направление поиска статьи о входе в храм; советы не проверены: https://churchofcyprus.org.cy/8418
+
 Болгарская патриархия, каталог молитвенника: https://bg-patriarshia.bg/bookshop-books/molitvenik
 
 Болгарская патриархия, сетевые молитвенные разделы: https://bg-patriarshia.bg/liturgical-prayer
