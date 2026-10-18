@@ -2,12 +2,12 @@
   "schema_version": 1,
   "author": "Гаврилов Леонид Геннадьевич",
   "year": 2026,
-  "status": "research_drafts_not_finished_guides",
+  "status": "five_docx_draft_layouts_not_finished_guides",
   "books": [
-    {"id": "universal", "title": "Впервые в храме: общее и различия в исследуемых церковных традициях", "languages": ["RU", "EL", "EN", "BG"], "layout": "parallel_three_columns", "scope": "expanded_scope_and_armenian_apostolic", "manuscript": "books/universal/manuscript.md", "sources": "books/universal/sources.json", "docx": "deliverables/universal.docx", "status": "planned", "verified_claims": 0},
-    {"id": "armenia", "title": "Впервые в храме Армянской апостольской церкви", "languages": ["RU"], "source_languages": ["EN"], "layout": "single_column", "scope": "armenian_apostolic_in_armenia", "manuscript": "books/armenia/manuscript.md", "sources": "books/armenia/sources.json", "docx": "deliverables/armenia.docx", "status": "planned", "verified_claims": 0},
-    {"id": "bulgaria", "title": "Впервые в православном храме Болгарии", "languages": ["RU", "BG"], "layout": "single_column", "scope": "bulgarian_orthodox", "manuscript": "books/bulgaria/manuscript.md", "sources": "books/bulgaria/sources.json", "docx": "deliverables/bulgaria.docx", "status": "planned", "verified_claims": 0},
-    {"id": "cyprus", "title": "Впервые в православном храме Кипра", "languages": ["RU", "EL"], "layout": "single_column", "scope": "church_of_cyprus", "manuscript": "books/cyprus/manuscript.md", "sources": "books/cyprus/sources.json", "docx": "deliverables/cyprus.docx", "status": "planned", "verified_claims": 0},
-    {"id": "russia", "title": "Впервые в православном храме России", "languages": ["RU"], "prayer_language_pending": "cu", "layout": "single_column", "scope": "russian_orthodox_in_russia", "manuscript": "books/russia/manuscript.md", "sources": "books/russia/sources.json", "docx": "deliverables/russia.docx", "status": "planned", "verified_claims": 0}
+    {"id": "universal", "title": "Впервые в храме: общее и различия в исследуемых церковных традициях", "languages": ["RU", "EL", "EN", "BG"], "layout": "parallel_three_columns", "scope": "expanded_scope_and_armenian_apostolic", "manuscript": "books/universal/manuscript.md", "sources": "books/universal/sources.json", "docx": "deliverables/universal.docx", "status": "draft_layout", "verified_claims": 0},
+    {"id": "armenia", "title": "Впервые в храме Армянской апостольской церкви", "languages": ["RU"], "source_languages": ["EN"], "layout": "single_column", "scope": "armenian_apostolic_in_armenia", "manuscript": "books/armenia/manuscript.md", "sources": "books/armenia/sources.json", "docx": "deliverables/armenia.docx", "status": "draft_layout", "verified_claims": 0},
+    {"id": "bulgaria", "title": "Впервые в православном храме Болгарии", "languages": ["RU", "BG"], "layout": "single_column", "scope": "bulgarian_orthodox", "manuscript": "books/bulgaria/manuscript.md", "sources": "books/bulgaria/sources.json", "docx": "deliverables/bulgaria.docx", "status": "draft_layout", "verified_claims": 0},
+    {"id": "cyprus", "title": "Впервые в православном храме Кипра", "languages": ["RU", "EL"], "layout": "single_column", "scope": "church_of_cyprus", "manuscript": "books/cyprus/manuscript.md", "sources": "books/cyprus/sources.json", "docx": "deliverables/cyprus.docx", "status": "draft_layout", "verified_claims": 0},
+    {"id": "russia", "title": "Впервые в православном храме России", "languages": ["RU"], "prayer_language_pending": "cu", "layout": "single_column", "scope": "russian_orthodox_in_russia", "manuscript": "books/russia/manuscript.md", "sources": "books/russia/sources.json", "docx": "deliverables/russia.docx", "status": "draft_layout", "verified_claims": 0}
   ]
 }

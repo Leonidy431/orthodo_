@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "phases": {
+    "P0": {
+      "status": "passed",
+      "attempts": 3,
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P1": {
+      "status": "passed",
+      "attempts": 3,
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P2": {
+      "status": "blocked",
+      "attempts": 3,
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P3": {
+      "status": "blocked",
+      "attempts": 3,
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P4": {
+      "status": "blocked",
+      "attempts": 3,
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P5": {
+      "status": "needs_human",
+      "attempts": 3,
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    },
+    "P6": {
+      "status": "blocked",
+      "attempts": 3,
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "input_sha256": "353309aa80c2548b15bbccb0a4564802f33fc3f6c1f4a7eecd82f6e3c830999d",
+      "updated_at": "2026-10-18T13:09:10+00:00"
+    }
+  },
+  "source_ids": [
+    "arm-etiquette",
+    "arm-prelacy",
+    "bg-prayer",
+    "cy-etiquette",
+    "cy-prayer",
+    "ru-participation"
+  ],
+  "events": [
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:09:10+00:00"
+    }
+  ],
+  "network_requests": 0,
+  "intersection": {
+    "Q-PRAYER": "unknown",
+    "Q-ETIQUETTE": "unknown",
+    "Q-PARTICIPATION": "unknown"
+  },
+  "artifacts": [
+    {
+      "id": "universal",
+      "status": "draft_layout_not_verified_guide",
+      "bytes": 5110,
+      "sha256": "9c8f360dc56c7957b5f181a3350a749dae58fae2e8be4bf2f9f6d2979d24224f",
+      "source_sha256": "7c07ef473180fbac7e109b720995d246aff0750e537e12e8568336eed6d835a5",
+      "fonts": {
+        "LiberationSerif-Regular.ttf": "all used codepoints covered; no shaping/rendering claim",
+        "LiberationSerif-Bold.ttf": "all used codepoints covered; no shaping/rendering claim"
+      },
+      "visual_review": "not_performed"
+    },
+    {
+      "id": "armenia",
+      "status": "draft_layout_not_verified_guide",
+      "bytes": 4198,
+      "sha256": "6972ea70a61bcc79fc5381c5ee7b8bb5a4777243a6ecfba41a1de9543daa7b5f",
+      "source_sha256": "1c03be7f22469abebb7115051e0b08e3d350ff2646ec5ebde2b872bb305a7b70",
+      "fonts": {
+        "LiberationSerif-Regular.ttf": "all used codepoints covered; no shaping/rendering claim",
+        "LiberationSerif-Bold.ttf": "all used codepoints covered; no shaping/rendering claim"
+      },
+      "visual_review": "not_performed"
+    },
+    {
+      "id": "bulgaria",
+      "status": "draft_layout_not_verified_guide",
+      "bytes": 4112,
+      "sha256": "b7d1359d198be826155f2168bb54f828b143394149983dd9cfc6dd2a3af2e397",
+      "source_sha256": "5c1dccff40678e87a886f8b62fa2513e67e9e2e908bdb865eb2fcb2226f5204b",
+      "fonts": {
+        "LiberationSerif-Regular.ttf": "all used codepoints covered; no shaping/rendering claim",
+        "LiberationSerif-Bold.ttf": "all used codepoints covered; no shaping/rendering claim"
+      },
+      "visual_review": "not_performed"
+    },
+    {
+      "id": "cyprus",
+      "status": "draft_layout_not_verified_guide",
+      "bytes": 4113,
+      "sha256": "9654d0f2d6fef97d856557bae7051e49b44a8a7d210d2007cfad5729b9a5de4f",
+      "source_sha256": "bf0ef6feed81b2edfbd18282d015346de8b82081d6655be494bdb0bc76dd1e00",
+      "fonts": {
+        "LiberationSerif-Regular.ttf": "all used codepoints covered; no shaping/rendering claim",
+        "LiberationSerif-Bold.ttf": "all used codepoints covered; no shaping/rendering claim"
+      },
+      "visual_review": "not_performed"
+    },
+    {
+      "id": "russia",
+      "status": "draft_layout_not_verified_guide",
+      "bytes": 4047,
+      "sha256": "617b612c4ddf709fceed04c293f74a15a07764ae04aaa11840333e1f586b9516",
+      "source_sha256": "0a1780a3c74b2224598b57dad1c9c149a24b987712d5ca97b6ee3e8b4b6409ba",
+      "fonts": {
+        "LiberationSerif-Regular.ttf": "all used codepoints covered; no shaping/rendering claim",
+        "LiberationSerif-Bold.ttf": "all used codepoints covered; no shaping/rendering claim"
+      },
+      "visual_review": "not_performed"
+    }
+  ],
+  "updated_at": "2026-10-18T13:10:10+00:00",
+  "limits": {
+    "seconds": 1200,
+    "new_sources": 100,
+    "attempts": 3
+  },
+  "publication": {
+    "status": "needs_human",
+    "branch": "copilot/third-attempt-book-research",
+    "paths": [
+      ".gitignore",
+      "books/armenia/manuscript.md",
+      "books/armenia/sources.json",
+      "books/bulgaria/manuscript.md",
+      "books/bulgaria/sources.json",
+      "books/cyprus/manuscript.md",
+      "books/cyprus/sources.json",
+      "books/manifest.json",
+      "books/russia/manuscript.md",
+      "books/russia/sources.json",
+      "books/universal/manuscript.md",
+      "books/universal/sources.json",
+      "data/pipeline/progress.json",
+      "data/pipeline/state.json",
+      "deliverables/armenia.docx",
+      "deliverables/bulgaria.docx",
+      "deliverables/cyprus.docx",
+      "deliverables/russia.docx",
+      "deliverables/third-attempt/common-prayers-three-columns.docx",
+      "deliverables/universal.docx",
+      "docs/evidence-matrix.md",
+      "docs/five-book-plan.md",
+      "docs/phases.md",
+      "docs/third-attempt/common-prayers-three-columns.md",
+      "docs/third-attempt/design-review.md",
+      "docs/third-attempt/design-spec.md",
+      "docs/third-attempt/editorial-review.md",
+      "progress.md",
+      "scripts/book_pipeline.py",
+      "scripts/build_word_third_attempt.py",
+      "scripts/run_book_pipeline.py",
+      "tests/test_book_pipeline.py"
+    ],
+    "reason": "Explicit request only: secret scan and PR publication tool required; no commit or push executed"
+  }
+}

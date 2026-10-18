@@ -21,3 +21,36 @@ network_requests = 0. Источник считается новым лишь п
 
 Сначала публикуется P1 как спецификация, затем выполняются доступные независимые
 этапы. Заблокированный содержательный этап не прячется за общей зелёной галочкой.
+
+## Ручной CLI
+
+Из любой рабочей папки, без установки пакетов:
+
+```sh
+python -B /home/runner/work/orthodo_/orthodo_/scripts/run_book_pipeline.py --dry-run
+python -B /home/runner/work/orthodo_/orthodo_/scripts/run_book_pipeline.py --execute --max-seconds 1200 --max-sources 100
+python -B /home/runner/work/orthodo_/orthodo_/scripts/run_book_pipeline.py --execute --resume --phase P5 --retry-reason "проверена новая редакция исходника"
+python -B /home/runner/work/orthodo_/orthodo_/scripts/run_book_pipeline.py --execute --resume --phase P1 --publish
+python -B -m unittest discover -s /home/runner/work/orthodo_/orthodo_/tests -p 'test_book_pipeline.py' -v
+```
+
+Первый execute используется только при отсутствии state.json; далее обязателен
+resume, чтобы не сбрасывать историю попыток. Без изменения входов blocked/failed/
+needs_human не повторяются без новой явной гипотезы. Лимит попыток сохраняется.
+После изменения входов старые passed инвалидируются. Каждая фаза исполняется
+не более одного раза за вызов; автоматического повтора DNS нет.
+Exit 0: запрошенные фазы passed либо dry-run; exit 2: есть blocked/failed/needs_human.
+Неверные параметры вызывают ошибку, а не обход ограничений.
+
+`--publish` работает только вместе с execute, проверяет точное имя ветки
+`copilot/third-attempt-book-research` и allowlist корневых файлов/папок проекта.
+Он сохраняет запрос `publication.status=needs_human`; сам не делает commit/push.
+Фактический секрет-скан и публикацию в этой среде выполняет инструмент PR.
+Публикация и автоматическая готовность не подразумеваются кодом завершения.
+
+Состояние: data/pipeline/state.json; структурированный журнал:
+data/pipeline/progress.json. Они не содержат сетевых токенов/куки.
+Раннер v1 не собирает внешние данные автоматически: лимит источников ограничивает
+новые записи относительно предыдущего состояния, сетевых запросов **0**.
+Содержательные стадии даже после появления кандидатов сохраняют needs_human:
+редакторская приёмка не автоматизирована и не может быть заявлена только раннером.

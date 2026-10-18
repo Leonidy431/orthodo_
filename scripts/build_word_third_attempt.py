@@ -6,6 +6,8 @@ import hashlib
 import io
 from pathlib import Path
 import re
+import subprocess
+import unicodedata
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -19,6 +21,8 @@ P = "http://schemas.openxmlformats.org/package/2006/relationships"
 ET.register_namespace("w", W)
 ET.register_namespace("r", R)
 HEADER = ["Ελληνικά", "English", "Български"]
+FONT = "Liberation Serif"
+ACCENT = "9B2424"
 TITLE = [
     "Гаврилов Леонид Геннадьевич",
     "Основные молитвы и поведение в храме",
@@ -41,7 +45,7 @@ def xml_bytes(root):
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 
-def parse(source):
+def parse(source, title=None, require_table=True):
     blocks = []
     rows = []
 
@@ -76,14 +80,49 @@ def parse(source):
         else:
             blocks.append(("p", line))
     finish_table()
-    if [text for kind, text in blocks[:6]] != TITLE:
+    if [text for kind, text in blocks[:6]] != (title or TITLE):
         raise ValueError("The six required title-page lines must be preserved")
-    if not any(kind == "table" for kind, _ in blocks):
+    if require_table and not any(kind == "table" for kind, _ in blocks):
         raise ValueError("No parallel table")
     return blocks
 
 
-def build(blocks):
+def initial(text):
+    """Split one EL/EN/BG letter and its combining marks, without normalization."""
+    if not text or not unicodedata.category(text[0]).startswith("L"):
+        raise ValueError("Prayer must start with a letter, without decorative substitution")
+    end = 1
+    while end < len(text) and unicodedata.category(text[end]).startswith("M"):
+        end += 1
+    return text[:end], text[end:]
+
+
+def font_coverage(text):
+    """Check actual code points against the installed regular and bold font cmaps."""
+    results = {}
+    for variant in ("LiberationSerif-Regular.ttf", "LiberationSerif-Bold.ttf"):
+        path = Path("/usr/share/fonts/truetype/liberation") / variant
+        if not path.is_file():
+            raise ValueError(f"Font missing: {path}")
+        result = subprocess.run(
+            ["fc-query", "--format=%{charset}", str(path)],
+            check=True, capture_output=True, text=True, timeout=10,
+        )
+        ranges = []
+        for item in result.stdout.split():
+            bounds = item.split("-")
+            ranges.append((int(bounds[0], 16), int(bounds[-1], 16)))
+        missing = sorted({
+            char for char in text if not char.isspace()
+            and not any(start <= ord(char) <= end for start, end in ranges)
+        })
+        if missing:
+            raise ValueError(f"{variant} lacks codepoints: {missing!r}")
+        results[variant] = "all used codepoints covered; no shaping/rendering claim"
+    return results
+
+
+def build(blocks, landscape=True):
     document = ET.Element(f"{{{W}}}document")
     body = element(document, "body")
     relationships = ET.Element(f"{{{P}}}Relationships")
@@ -92,17 +131,33 @@ def build(blocks):
     })
     expected = []
 
-    def paragraph(parent, text, style=None, language="ru-RU"):
+    def paragraph(parent, text, style=None, language="ru-RU", cover=None, table_header=False):
+        prayer = text.startswith("[prayer] ")
+        if prayer:
+            text = text[len("[prayer] "):]
         expected.append(text)
         p = element(parent, "p")
         props = element(p, "pPr")
         if style:
             element(props, "keepNext")
-        element(props, "spacing", {"after": 120})
+        if cover in (1, 5):
+            borders = element(props, "pBdr")
+            element(borders, "bottom", {"val": "single", "sz": 4, "space": 12, "color": ACCENT})
+        element(props, "spacing", {
+            "before": 650 if cover == 0 else 240 if cover is not None else 0,
+            "after": 420 if cover is not None else 140,
+            "line": 288, "lineRule": "auto",
+        })
+        if cover is not None:
+            element(props, "jc", {"val": "center"})
         if style:
             element(props, "outlineLvl", {"val": int(style[-1]) - 1})
         # Explicit run properties keep the document independent of installed templates.
-        for part in re.split(r"(https://[^\s<>]+)", text):
+        chunks = [(part, False) for part in re.split(r"(https://[^\s<>]+)", text)]
+        if prayer:
+            first, rest = initial(text)
+            chunks = [(first, True), (rest, False)]
+        for part, is_initial in chunks:
             if not part:
                 continue
             run_parent = p
@@ -117,18 +172,20 @@ def build(blocks):
             run = element(run_parent, "r")
             rprops = element(run, "rPr")
             element(rprops, "rFonts", {
-                "ascii": "DejaVu Sans", "hAnsi": "DejaVu Sans",
-                "eastAsia": "DejaVu Sans", "cs": "DejaVu Sans",
+                "ascii": FONT, "hAnsi": FONT, "eastAsia": FONT, "cs": FONT,
             })
-            if style:
+            if style or table_header:
                 element(rprops, "b")
-            element(rprops, "sz", {"val": 28 if style else 22})
+            element(rprops, "color", {"val": ACCENT if style or table_header or is_initial else "000000"})
+            element(rprops, "sz", {"val": 38 if is_initial else 34 if cover == 1 else 28 if style else 23})
+            if part.startswith("https://"):
+                element(rprops, "u", {"val": "single"})
             element(rprops, "lang", {"val": language})
             node = element(run, "t", text=part)
             node.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
         return p
 
-    for kind, value in blocks:
+    for block_index, (kind, value) in enumerate(blocks):
         if kind == "pagebreak":
             element(element(element(body, "p"), "r"), "br", {"type": "page"})
         elif kind == "table":
@@ -136,9 +193,12 @@ def build(blocks):
             props = element(table, "tblPr")
             element(props, "tblW", {"w": 14400, "type": "dxa"})
             borders = element(props, "tblBorders")
-            for side in ("top", "left", "bottom", "right", "insideH", "insideV"):
-                element(borders, side, {"val": "single", "sz": 4, "color": "808080"})
+            for side in ("top", "bottom", "insideV"):
+                element(borders, side, {"val": "single", "sz": 3, "color": "BBBBBB"})
             element(props, "tblLayout", {"type": "fixed"})
+            margins = element(props, "tblCellMar")
+            for side in ("top", "left", "bottom", "right"):
+                element(margins, side, {"w": 120, "type": "dxa"})
             grid = element(table, "tblGrid")
             for _ in range(3):
                 element(grid, "gridCol", {"w": 4800})
@@ -151,12 +211,17 @@ def build(blocks):
                     cell = element(row, "tc")
                     cell_props = element(cell, "tcPr")
                     element(cell_props, "tcW", {"w": 4800, "type": "dxa"})
-                    paragraph(cell, text, language=language)
+                    paragraph(cell, text, language=language, table_header=index == 0)
         else:
-            paragraph(body, value, kind if kind.startswith("h") else None)
+            paragraph(body, value, kind if kind.startswith("h") else None,
+                      cover=block_index if block_index < 7 else None)
     section = element(body, "sectPr")
     element(section, "footerReference", {"type": "default"}).set(f"{{{R}}}id", "footer")
-    element(section, "pgSz", {"w": 16838, "h": 11906, "orient": "landscape"})
+    element(section, "pgSz", {
+        "w": 16838 if landscape else 11906,
+        "h": 11906 if landscape else 16838,
+        "orient": "landscape" if landscape else "portrait",
+    })
     element(section, "pgMar", {
         "top": 850, "right": 1219, "bottom": 850, "left": 1219,
         "header": 400, "footer": 400, "gutter": 0,
@@ -164,7 +229,12 @@ def build(blocks):
     footer = ET.Element(f"{{{W}}}ftr")
     p = element(footer, "p")
     element(element(p, "pPr"), "jc", {"val": "center"})
-    element(p, "fldSimple", {"instr": "PAGE"})
+    field = element(p, "fldSimple", {"instr": "PAGE"})
+    run = element(field, "r")
+    rprops = element(run, "rPr")
+    element(rprops, "rFonts", {"ascii": FONT, "hAnsi": FONT})
+    element(rprops, "sz", {"val": 20})
+    element(rprops, "lang", {"val": "ru-RU"})
     types = ET.Element("Types", xmlns="http://schemas.openxmlformats.org/package/2006/content-types")
     for extension, content_type in (
         ("rels", "application/vnd.openxmlformats-package.relationships+xml"),
@@ -197,7 +267,7 @@ def build(blocks):
     return output.getvalue(), expected
 
 
-def validate(content, expected):
+def validate(content, expected, require_table=True, landscape=True):
     ns = {"w": W}
     with zipfile.ZipFile(io.BytesIO(content)) as archive:
         if archive.testzip() is not None:
@@ -207,9 +277,9 @@ def validate(content, expected):
         root = ET.fromstring(archive.read("word/document.xml"))
         # Check the property sequences emitted here, not the complete OOXML schema.
         for path, order in (
-            (".//w:pPr", ["keepNext", "spacing", "outlineLvl"]),
-            (".//w:rPr", ["rFonts", "b", "sz", "lang"]),
-            (".//w:tblPr", ["tblW", "tblBorders", "tblLayout"]),
+            (".//w:pPr", ["keepNext", "pBdr", "spacing", "jc", "outlineLvl"]),
+            (".//w:rPr", ["rFonts", "b", "color", "sz", "u", "lang"]),
+            (".//w:tblPr", ["tblW", "tblBorders", "tblLayout", "tblCellMar"]),
         ):
             for properties in root.findall(path, ns):
                 indices = [order.index(child.tag.rsplit("}", 1)[-1]) for child in properties]
@@ -223,7 +293,7 @@ def validate(content, expected):
         if actual != expected:
             raise ValueError("Source text is missing, truncated or reordered")
         tables = root.findall(".//w:tbl", ns)
-        if not tables:
+        if require_table and not tables:
             raise ValueError("Missing table")
         for table in tables:
             for row in table.findall("w:tr", ns):
@@ -234,8 +304,8 @@ def validate(content, expected):
             if [col.get(f"{{{W}}}w") for col in table.findall("w:tblGrid/w:gridCol", ns)] != ["4800"] * 3:
                 raise ValueError("Unequal columns")
         size = root.find(".//w:sectPr/w:pgSz", ns)
-        if size is None or size.get(f"{{{W}}}orient") != "landscape":
-            raise ValueError("Missing landscape page setting")
+        if size is None or size.get(f"{{{W}}}orient") != ("landscape" if landscape else "portrait"):
+            raise ValueError("Wrong page orientation")
         footer = ET.fromstring(archive.read("word/footer1.xml"))
         if footer.find(".//w:fldSimple[@w:instr='PAGE']", ns) is None:
             raise ValueError("Missing page-number field")
@@ -250,9 +320,12 @@ def main():
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--write", action="store_true", help="Write the validated DOCX")
     modes.add_argument("--check", action="store_true", help="Check existing DOCX against source")
+    parser.add_argument("--font-check", action="store_true", help="Check installed fonts, without downloading")
     args = parser.parse_args()
     content, expected = build(parse(args.source.read_text(encoding="utf-8")))
     validate(content, expected)
+    if args.font_check:
+        print(font_coverage("".join(expected) + "Α\u0313\u0301 Ω\u0342 ά Ἀ ᾠ Български English"))
     if args.check:
         existing = args.output.read_bytes()
         validate(existing, expected)

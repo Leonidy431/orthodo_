@@ -1,0 +1,257 @@
+{
+  "events": [
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:02:47+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:06:17+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P0",
+      "status": "passed",
+      "reason": "Approved specification and prior audit available; no new network operation",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P1",
+      "status": "passed",
+      "reason": "Five IDs, scope and evidence schemas validated; not substantive books",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P2",
+      "status": "blocked",
+      "reason": "No primary-inspected applicable sample for every country; DNS/rights verification pending",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P3",
+      "status": "blocked",
+      "reason": "Jurisdiction registry open or no fully confirmed contextual intersection",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P4",
+      "status": "blocked",
+      "reason": "Five authorial research drafts are not five verified substantive guides",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P5",
+      "status": "needs_human",
+      "reason": "Five DOCX draft layouts built and structurally checked; rendering and substantive acceptance pending",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "running",
+      "reason": "Single finite local attempt",
+      "at": "2026-10-18T13:09:10+00:00"
+    },
+    {
+      "phase": "P6",
+      "status": "blocked",
+      "reason": "Not finished guides; incomplete acceptance phases: P2, P3, P4, P5",
+      "at": "2026-10-18T13:09:10+00:00"
+    }
+  ],
+  "network_requests": 0
+}
